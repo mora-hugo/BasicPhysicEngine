@@ -23,7 +23,7 @@ void Particle::Setup()
 
 void Particle::Update()
 {
-    
+    UpdatePhysics();
     DurationLeft -= ofGetLastFrameTime(); 
     
 }

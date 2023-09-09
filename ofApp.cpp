@@ -40,7 +40,6 @@ void ofApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
     bDrawLine = true;
-
     StartingVector = Vector3D(x,y);
     
 }

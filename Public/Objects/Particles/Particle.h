@@ -14,6 +14,8 @@ public:
     virtual void Update();
 
     virtual void Draw();
+
+    virtual void UpdatePhysics() = 0;
 protected:
     
     Vector3D Position, Velocity;

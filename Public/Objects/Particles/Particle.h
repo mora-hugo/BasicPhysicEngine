@@ -4,7 +4,7 @@
 class Particle
 {
 public:
-    Particle(const Vector3D& BasePosition, const Vector3D& BaseVelocity, const double& Size, const double& Duration = 0);
+    Particle(const Vector3D& BasePosition, const Vector3D& BaseVelocity, const double& Size, const double& Mass, const double& Duration = 0);
     Particle();
 
     bool IsFinished();
@@ -22,8 +22,10 @@ protected:
 
     double Size = 0;
 
+    double Mass = 1;
 private:
     double DurationLeft = 0;
+    
 
     
 

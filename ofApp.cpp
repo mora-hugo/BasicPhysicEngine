@@ -49,7 +49,7 @@ void ofApp::mouseReleased(int x, int y, int button){
     bDrawLine = false;
     const Vector3D EndVector(x,y);
     const Vector3D NewVector = EndVector.Sub(StartingVector);
-    Particle * t = System.AddParticle(EndVector,NewVector.Multiply(0.025).Negate(),10,5);
+    Particle * t = System.AddParticle(EndVector,NewVector.Multiply(0.025).Negate(),10,5,5);
     cout << NewVector.GetX() << "," << NewVector.GetY() << endl;
 }
 

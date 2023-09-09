@@ -19,9 +19,9 @@ public:
         }
     }
     
-    T* AddParticle(const Vector3D& Position, const Vector3D& Velocity, const double Size, const double Duration)
+    T* AddParticle(const Vector3D& Position, const Vector3D& Velocity, const double Size, const double Mass,const double Duration)
     {
-        T * Particle = new T(Position,Velocity,Size,Duration);
+        T * Particle = new T(Position,Velocity,Size,Mass,Duration);
         Particles.push_back(Particle);
         return Particle;
     }
@@ -53,6 +53,7 @@ public:
 private:
     
     std::vector<T*> Particles;
+    
 
     
 };

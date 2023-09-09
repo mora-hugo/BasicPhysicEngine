@@ -2,7 +2,7 @@
 
 #include "of3dGraphics.h"
 
-Particle::Particle(const Vector3D& BasePosition, const Vector3D &BaseVelocity, const double &Size, const double& Duration) : Position(BasePosition), Velocity(BaseVelocity), Size(Size), DurationLeft(Duration)
+Particle::Particle(const Vector3D& BasePosition, const Vector3D &BaseVelocity, const double &Size, const double& Mass, const double& Duration) : Position(BasePosition), Velocity(BaseVelocity), Size(Size), Mass(Mass), DurationLeft(Duration)
 {
     
 }

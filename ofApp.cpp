@@ -12,6 +12,11 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     System.Draw();
+    if(bDrawLine)
+    {
+        ofSetColor(ofColor::white);
+        ofDrawLine(StartingVector.GetX(),StartingVector.GetY(),ofGetMouseX(),ofGetMouseY());
+    }
 }
 
 //--------------------------------------------------------------
@@ -30,18 +35,23 @@ void ofApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-    System.AddParticle(Vector3D(x,y),Vector3D(0.25,-1),10,2);
+    bDrawLine = true;
 
+    StartingVector = Vector3D(x,y);
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-
+    bDrawLine = false;
+    const Vector3D EndVector(x,y);
+    const Vector3D NewVector = EndVector.Sub(StartingVector);
+    Particle * t = System.AddParticle(EndVector,NewVector.Multiply(0.025).Negate(),10,5);
+    cout << NewVector.GetX() << "," << NewVector.GetY() << endl;
 }
 
 //--------------------------------------------------------------

@@ -8,36 +8,51 @@ class ParticleSystem
     // If T is not a child from Particle, the compilator will be angry
     static_assert(std::is_base_of<Particle, T>::value, "T must derive from Particle");
 public:
-
-    void AddParticle(const Vector3D& Position, const Vector3D& Velocity, const double Size, const double Duration)
+    ~ParticleSystem()
     {
-        
-        Particles.push_back(T(Position,Velocity,Size,Duration));
+        for(unsigned int i = 0; i < Particles.size(); i++)
+        {
+            // Remove the particle if it is finished
+            delete Particles[i];
+            Particles.erase(Particles.begin() + i);
+                
+        }
+    }
+    
+    T* AddParticle(const Vector3D& Position, const Vector3D& Velocity, const double Size, const double Duration)
+    {
+        T * Particle = new T(Position,Velocity,Size,Duration);
+        Particles.push_back(Particle);
+        return Particle;
     }
     
     void Update()
     {
         for(unsigned int i = 0; i < Particles.size(); i++)
         {
-            T& CurrentParticle = Particles[i];
-            CurrentParticle.Update();
-            if(CurrentParticle.IsFinished())
+            T* CurrentParticle = Particles[i];
+            CurrentParticle->Update();
+            if(CurrentParticle->IsFinished())
+            {
                 // Remove the particle if it is finished
+                delete Particles[i];
                 Particles.erase(Particles.begin() + i);
+            }
+                
         }
     }
     
     void Draw()
     {
-        for(T& CurrentParticle : Particles)
+        for(T* CurrentParticle : Particles)
         {
-            CurrentParticle.Draw();
+            CurrentParticle->Draw();
         }
     }
 
 private:
     
-    std::vector<T> Particles;
+    std::vector<T*> Particles;
 
     
 };

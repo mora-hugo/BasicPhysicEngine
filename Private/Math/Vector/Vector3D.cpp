@@ -16,10 +16,21 @@ Vector3D Vector3D::Sub(const Vector3D& Vector) const
 
 Vector3D Vector3D::Multiply(const double Scalar) const
 {
-    return Vector3D(X*Scalar,Y+Scalar,Z*Scalar);
+    return Vector3D(X*Scalar,Y*Scalar,Z*Scalar);
 }
 
-Vector3D Vector3D::Normalize(const double Scalar) const
+Vector3D Vector3D::Divide(const double Scalar) const
+{
+    assert(Scalar == 0,"Division by zero is impossible");
+    return Multiply(1/Scalar);
+}
+
+Vector3D Vector3D::Negate() const
+{
+    return Multiply(-1);
+}
+
+Vector3D Vector3D::Normalize() const
 {
     return Multiply(1/Magnitude());
 }

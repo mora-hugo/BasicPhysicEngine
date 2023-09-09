@@ -65,6 +65,26 @@ public:
      */
     Vector3D Multiply(const double Scalar) const;
 
+
+    /**
+     * Divide each component of the vector by a scalar.
+     *
+     * @param Scalar The scalar by which to divide the components of the vector.
+     * @return A new vector where each component is the result of dividing the
+     *         corresponding component of the current vector by the scalar.
+     */
+    Vector3D Divide(const double Scalar) const;
+    
+
+    /**
+     * Negate the components of the vector by changing their sign.
+     *
+     * @return A new vector where each component is the negation of the corresponding
+     *         component of the current vector.
+     */
+    Vector3D Negate() const;
+    
+
     /**
      * \brief Normalize the vector.
      * 
@@ -73,7 +93,7 @@ public:
      * \param Scalar The scalar value to scale the normalized vector.
      * \return A new 3D vector representing the normalized and scaled vector.
      */
-    Vector3D Normalize(const double Scalar) const;
+    Vector3D Normalize() const;
     
     /**
      * \brief Component-wise product of two vectors.

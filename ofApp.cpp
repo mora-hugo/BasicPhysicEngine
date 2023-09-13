@@ -6,12 +6,14 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    System.Update();
+    FireBalls.Update();
+    Bullets.Update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    System.Draw();
+    FireBalls.Draw();
+    Bullets.Draw();
     if(bDrawLine)
     {
         ofSetColor(ofColor::white);
@@ -49,7 +51,7 @@ void ofApp::mouseReleased(int x, int y, int button){
     bDrawLine = false;
     const Vector3D EndVector(x,y);
     const Vector3D NewVector = EndVector.Sub(StartingVector);
-    Particle * t = System.AddParticle(EndVector,NewVector.Multiply(0.025).Negate(),10,5,5);
+    SpawnParticle(EndVector,NewVector.Multiply(0.025).Negate());
     cout << NewVector.GetX() << "," << NewVector.GetY() << endl;
 }
 
@@ -70,6 +72,23 @@ void ofApp::windowResized(int w, int h){
 
 //--------------------------------------------------------------
 void ofApp::gotMessage(ofMessage msg){
+
+}
+
+void ofApp::SpawnParticle(const Vector3D & Position, const Vector3D & Velocity)
+{
+    switch (CurrentParticleType)
+    {
+    case Bullet:
+        Bullets.AddParticle(Position,Velocity.Multiply(2),20,5,5);
+        break;
+    case Fireball:
+        FireBalls.AddParticle(Position,Velocity,30,5,5);
+        break;
+    default:
+        break;
+
+    }
 
 }
 

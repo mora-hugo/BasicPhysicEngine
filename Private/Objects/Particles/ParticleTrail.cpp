@@ -10,6 +10,28 @@ ParticleTrail::ParticleTrail(const Vector3D& BasePosition, const Vector3D& BaseV
 
 void ParticleTrail::Draw()
 {
+    const unsigned int Color = ofRandom(0,5);
+    switch (Color)
+    {
+    case 0:
+        ofSetColor(ofColor::red);
+        break;
+    case 1:
+        ofSetColor(ofColor::darkRed);
+        break;
+    case 2:
+        ofSetColor(ofColor::orangeRed);
+        break;
+    case 3:
+        ofSetColor(ofColor::indianRed);
+        break;
+    case 4:
+        ofSetColor(ofColor::darkOrange);
+        break;
+    default:
+        ofSetColor(ofColor::yellow);
+        break;
+    }
     Particle::Draw();
 }
 
